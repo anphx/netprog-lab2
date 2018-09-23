@@ -17,7 +17,7 @@
         <properties>
           <focusCycleRoot value="true"/>
           <font name="Courier New"/>
-          <text value="Enter your command here..."/>
+          <text value=""/>
           <toolTipText value=""/>
           <verifyInputWhenFocusTarget value="false"/>
         </properties>
@@ -56,7 +56,7 @@
           <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="UNIX Command execution"/>
+          <text value="UNIX Command execution. Enter your command below:"/>
         </properties>
       </component>
       <component id="2ead6" class="javax.swing.JLabel">
@@ -92,7 +92,7 @@
         </constraints>
         <properties>
           <enabled value="true"/>
-          <text value="Run"/>
+          <text value="Run locally"/>
         </properties>
       </component>
       <component id="21929" class="javax.swing.JLabel">

@@ -16,17 +16,15 @@ public class CmdExecutor implements Runnable {
 
         try {
             String[] commands = {
-                    "/bin/sh",
-                    "-c",
-                    this.cmd
+                "/bin/sh",
+                "-c",
+                this.cmd
             };
             Process proc = Runtime.getRuntime().exec(commands);
 
-            BufferedReader stdInput = new BufferedReader(new
-                    InputStreamReader(proc.getInputStream()));
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 
-            BufferedReader stdError = new BufferedReader(new
-                    InputStreamReader(proc.getErrorStream()));
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
 
             // read the output from the command
             String s;
@@ -43,11 +41,10 @@ public class CmdExecutor implements Runnable {
         } catch (IOException e) {
             return output;
         }
-
     }
 
     @Override
     public void run() {
-//        executeCmd();
+        // just to run
     }
 }

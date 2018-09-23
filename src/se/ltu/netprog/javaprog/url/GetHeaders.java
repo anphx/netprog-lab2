@@ -1,7 +1,7 @@
 package se.ltu.netprog.javaprog.url;
 
 
-//Sample Java code - uses URL object to retreive a web page 
+//Sample Java code - uses URL object to retrieve a web page
 //
 //Looks for a url on the command line, prints out some headers that 
 //	are sent back by the server when fetching the URL 

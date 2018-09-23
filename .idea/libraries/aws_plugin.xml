@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="aws-plugin">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/aspectjrt.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/aspectjweaver.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/aws-java-sdk-1.3.33.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/AWS-plugin.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/commons-codec-1.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/commons-httpclient-3.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/freemarker-2.3.18.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/httpclient-4.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/httpcore-4.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/jetbrains-jdbc-connector.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/mail-1.4.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/mysql-connector-java-5.1.6-bin.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/spring-beans-3.0.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/spring-context-3.0.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/AWS-plugin/lib/spring-core-3.0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

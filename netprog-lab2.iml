@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.apache.commons.io" level="application" />
+    <orderEntry type="library" name="aws-plugin" level="project" />
   </component>
 </module>
