@@ -17,12 +17,10 @@ public class Lookup {
         // use a try/catch to handle failed lookups
         try {
             InetAddress a = InetAddress.getByName(hostname);
-            System.out.println(hostname + ":" + a.getHostAddress());
+            System.out.println("AnPham's speaking: " + hostname + ": " + a.getHostAddress());
         } catch (UnknownHostException e) {
             System.out.println("No address found for " + hostname);
-
         }
-
     }
 
 }
