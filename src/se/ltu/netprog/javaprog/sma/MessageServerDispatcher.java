@@ -44,8 +44,10 @@ public class MessageServerDispatcher extends Thread {
 
 				Deliverable d;
 				d = callServer.getSubscriber(m.getType());
-				if (d != null)
+				if (d != null) {
+					System.out.println("-> Subscribers found: " + d);
 					result = d.send(m);
+				}
 				else {
 					System.err.println("-> No subscribers found.");
 					result = new Message();

@@ -22,7 +22,7 @@ public class FileLogger {
         logger = Logger.getLogger(this.className);
         logger.setLevel(toLevel(this.logLevel));
 
-        fileTxt = new FileHandler("logs/serverlog.log");
+        fileTxt = new FileHandler("logs/serverlog.log", true);
         fileTxt.setFormatter(new SimpleFormatter());
         logger.addHandler(fileTxt);
     }

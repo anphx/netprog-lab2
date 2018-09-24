@@ -1,13 +1,13 @@
 package netprog.sockets;
 
 import netprog.functions.CmdExecutor;
-import netprog.logger.FileLogger;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 public class ClientHandler implements Runnable {
@@ -15,9 +15,9 @@ public class ClientHandler implements Runnable {
     private Logger LOGGER;
     private static int BUFSIZE = 2048;
 
-    public ClientHandler(Socket s, String logLevel) {
+    public ClientHandler(Socket s, Logger logger) {
         socket = s;
-        LOGGER = new FileLogger("TCPThreadedServer", logLevel).logger();
+        LOGGER = logger;
     }
 
     @Override
@@ -37,27 +37,36 @@ public class ClientHandler implements Runnable {
 
         // AnP: print out client's address
         String clientAddr = s.getInetAddress().getHostAddress();
-        this.LOGGER.info("Connection from " + clientAddr);
-        System.out.println("Connection from " + clientAddr);
+        LOGGER.info("Connection from " + clientAddr + " on port: " + s.getPort());
 
         // AnP: Set up streams
         InputStream in = s.getInputStream();
         OutputStream out = s.getOutputStream();
+
         // AnP: read cmd input from client
         while (in.read(buff) != -1) {
             // AnP: execute command using CmdExecutor
-            CmdExecutor executor = new CmdExecutor(new String(buff, Charset.forName("UTF-8")).trim());
-            byte[] cmdOutput = executor.executeCmd().getBytes();
+            String cmd = new String(buff, Charset.forName("UTF-8")).trim();
+            LOGGER.info("Command request from " + clientAddr + ": " + cmd);
+
+            CmdExecutor executor = new CmdExecutor(cmd);
+//            byte[] cmdOutput = executor.executeCmd().getBytes();
 
             // AnP: send back result to outputStream
-            out.write(cmdOutput,0, cmdOutput.length);
+            out.write(executor.executeCmd().getBytes());
+
+            // AnP: Clean up buffer reader to avoid memorized string from last msg
+            // this happens when the next string is shorter than the previous one
+            // e.g: 1. 123456 => 123456
+            // 		2. 123	  => 123456, because bytes are allocated and occupied by [1][2][3][4][5][6]
+            Arrays.fill(buff, (byte)0);
+            out.flush();
         }
 
         // AnP: close connection when client disconnected
-        System.out.println("Client has left\n");
-        this.LOGGER.severe("Client has left\n");
-        this.LOGGER.severe("Connection closed!\n");
-
+//        System.out.println("Client has left\n");
+        LOGGER.info("Client connected on port: " + s.getPort() + " has left\n");
+        LOGGER.info("Connection closed!\n");
         s.close();
     }
 }

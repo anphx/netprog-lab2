@@ -28,8 +28,7 @@ public class TCPThreadedServer {
             e.printStackTrace();
         }
         Logger logger = fileLog.logger();
-
-
+        
         // TODO: specify number of threads as argument (optional)
         ExecutorService threadPool = Executors.newFixedThreadPool(POOLSIZE);
 
@@ -40,13 +39,13 @@ public class TCPThreadedServer {
             for (; ; ) {
                 logger.info("Server is running, waiting for client to connect");
                 Socket s = listener.accept();
-                ClientHandler obj_worker = new ClientHandler(s, args[1]);
+                ClientHandler obj_worker = new ClientHandler(s, logger);
                 threadPool.execute(obj_worker);
             }
 
         } catch (IOException e) {
             logger.throwing("TCPThreadedServer", "main()", e);
-            System.out.println("Fatal I/O Error !");
+//            System.out.println("Fatal I/O Error !");
             System.exit(0);
         }
     }

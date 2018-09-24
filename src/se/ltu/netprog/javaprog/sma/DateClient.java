@@ -20,14 +20,44 @@ public class DateClient {
 			System.err.println(e);
 			return;
 		}
+
+		sendSomeMsg(conn);
+		sendAnotherMsg(conn);
+
+//		Message m = new Message();
+////		m.setType(DateService.DATE_SERVICE_MESSAGE);
+////		m.setParam("person","george");
+////		m = conn.call(m);
+////		System.out.println("Date " + m.getParam("date"));
+////		m.setType(75);
+////		m = conn.call(m);
+////		System.out.println("Bad reply " + m);
+		// AnP: 4th package sent
+		conn.disconnect();
+	}
+
+	static void sendAnotherMsg(MessageClient conn) {
+		Message m = new Message();
+		m.setType(DateService.DATE_SERVICE_MESSAGE);
+
+		// AnP: 3rd package sent
+		m = conn.call(m);
+		System.out.println("Message after call" + m);
+		System.out.println("Date " + m.getParam("date"));
+	}
+
+	static void sendSomeMsg(MessageClient conn) {
 		Message m = new Message();
 		m.setType(DateService.DATE_SERVICE_MESSAGE);
 		m.setParam("person","george");
+
+		// AnP: 1st package sent
 		m = conn.call(m);
 		System.out.println("Date " + m.getParam("date"));
 		m.setType(75);
+
+		// AnP: 2nd package sent
 		m = conn.call(m);
 		System.out.println("Bad reply " + m);
-		conn.disconnect();
 	}
 }
